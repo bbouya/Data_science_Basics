@@ -30,5 +30,3 @@ they require at least Python 3.6
 23. [Recommender Systems]()
 24. [Databases and SQL]()
 25. [MapReduce]()
-26. Data Ethics
-27. Go Forth And Do Data Science
