@@ -1,4 +1,6 @@
 from turtle import Vec2D
+
+from sklearn.cluster import k_means
 from linear_algebra import Vector
 
 
@@ -33,3 +35,33 @@ import itertools
 import random
 import tqdm 
 from linear_algebra import squared_distance
+
+class KMeans:
+    def __init__(self, k: int) -> None:
+        self.k = k                      # number of clusters
+        self.means = None
+
+    def classify(self, input: Vector) -> int:
+        """return the index of the cluster closest to the input"""
+        return min(range(self.k),
+                   key=lambda i: squared_distance(input, self.means[i]))
+
+    def train(self, inputs: List[Vector]) -> None:
+        # Start with random assignments
+        assignments = [random.randrange(self.k) for _ in inputs]
+
+        with tqdm.tqdm(itertools.count()) as t:
+            for _ in t:
+                # Compute means and find new assignments
+                self.means = cluster_means(self.k, inputs, assignments)
+                new_assignments = [self.classify(input) for input in inputs]
+
+                # Check how many assignments changed and if we're done
+                num_changed = num_differences(assignments, new_assignments)
+                if num_changed == 0:
+                    return
+
+                # Otherwise keep the new assignments, and compute new means
+                assignments = new_assignments
+                self.means = cluster_means(self.k, inputs, assignments)
+                t.set_description(f"changed: {num_changed} / {len(inputs)}")
