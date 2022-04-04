@@ -1,4 +1,10 @@
+from ast import Call
+import imp
+from pickletools import floatnl
+from pydoc import importfile
 from typing import List
+
+from numpy import identity
 
 Vector = List[float]
 
@@ -51,3 +57,76 @@ def vector_mean(vectors: List[Vector]) -> Vector:
 
 assert vector_mean([[1,2],[3,4],[5,6]]) == [3,4]
 
+def dot(v: Vector, w: Vector) -> float:
+    """Computes v_1 * w_1 + .... + v_n*w_n """
+    assert len(v) == len(w) , "Vectors must have the same len"
+    return sum(v_i* w_i for v_i,w_i in zip(v,w))
+
+assert dot([1,2,3],[4,5,6]) == 32 # 1*4 +2*5 +3*6
+
+def sum_of_squares(v: Vector) -> float:
+    """returns v_1 * v_1"""
+    return dot(v,v)
+
+assert sum_of_squares([1,2,3]) == 14 
+
+import math 
+
+def magnitude(v:Vector) -> float:
+    """Returns the magnitude (or length) of v"""
+    return math.sqrt(sum_of_squares(v))
+
+assert magnitude([3,4]) == 5
+
+
+def distance(v:Vector, w:Vector) -> float:
+    return magnitude(subtract(v,w))
+
+# Anather type alias
+Matrix = List[List[float]]
+
+A = [[1,2,3],
+     [4,5,6]]
+B = [[1,2],
+     [3,4],
+     [5,6]]
+
+from typing import Tuple
+
+def shape(A: Matrix) -> Tuple[int,int]:
+    """Returns (# of rows of A, # of columns of A"""
+    num_rows = len(A)
+    num_cols = len(A[0]) if A else 0 # number of elements in first row
+    return num_rows, num_cols
+
+assert shape([[1,2,3],[4,5,6]]) == [2,3]
+
+def get_row(A:Matrix, i: int) -> Vector:
+    """Returns the i-th row of A (as a Vector)"""
+    return A[i] # A[i] is already the ith row
+
+def get_column(A: Matrix, j:int) -> Vector:
+    """Return the j*th column of A (as a vector)"""
+    return [A_i[j] for A_i in A]
+
+from typing import Callable
+
+def make_matrix(num_rows: int, num_cols: int, entry_fn: Callable[[int,int], float]) -> Matrix:
+    """Return a num_rows x num_cols matrix whose (i,j) -th entry is entry_fn(i,j)"""
+    return [[entry_fn(i,j) for j in range(num_cols)] for i in range(num_rows)]
+
+def identity_matrix(n: int) -> Matrix:
+    """Return the n x n identity matrix"""
+    return make_matrix(n,n, lambda i, j : 1 if i==j else 0)
+
+assert identity_matrix(5) == [[1,0,0,0,0],
+                                [0,1,0,0,0],
+                                [0,0,1,0,0]
+                                [0,0,0,1,0]
+                                [0,0,0,0,1]]
+
+data = [[70,170,40],
+        [65,120,26],
+        [77,250,19],
+        # .........
+        ]
