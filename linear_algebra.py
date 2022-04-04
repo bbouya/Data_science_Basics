@@ -99,7 +99,7 @@ def shape(A: Matrix) -> Tuple[int,int]:
     num_cols = len(A[0]) if A else 0 # number of elements in first row
     return num_rows, num_cols
 
-assert shape([[1,2,3],[4,5,6]]) == [2,3]
+assert shape([[1,2,3],[4,5,6]]) == (2,3)
 
 def get_row(A:Matrix, i: int) -> Vector:
     """Returns the i-th row of A (as a Vector)"""
@@ -118,11 +118,12 @@ def make_matrix(num_rows: int, num_cols: int, entry_fn: Callable[[int,int], floa
 def identity_matrix(n: int) -> Matrix:
     """Return the n x n identity matrix"""
     return make_matrix(n,n, lambda i, j : 1 if i==j else 0)
+ziz = identity_matrix(5)
 
 assert identity_matrix(5) == [[1,0,0,0,0],
                                 [0,1,0,0,0],
-                                [0,0,1,0,0]
-                                [0,0,0,1,0]
+                                [0,0,1,0,0],
+                                [0,0,0,1,0],
                                 [0,0,0,0,1]]
 
 data = [[70,170,40],
