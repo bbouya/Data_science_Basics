@@ -18,6 +18,7 @@ assert vector_equal([1,2],[1,2]) == [1,2], 'not equal'
 
 from typing import List
 from linear_algebra import vector_mean
+import random 
 def cluster_means(k: int, 
                   inputs: List[Vector],
                   assignments: List[int]) -> List[Vector]:
@@ -26,4 +27,9 @@ def cluster_means(k: int,
         clusters[assignment].append(input)
     
     #if a cluster is empty, just use a random point
-    return [vector_means]
+    return [vector_mean(cluster) if cluster else random.choice(inputs) for cluster in clusters]
+
+import itertools
+import random
+import tqdm 
+from linear_algebra import squared_distance
