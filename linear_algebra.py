@@ -36,3 +36,10 @@ def vector_sum(vectors: List[Vector])-> Vector:
     # the i-th element of the result is the sum of every vector[i]
     return [sum(vector[i] for vector in vectors) for i in range(num_elements)]
 
+assert vector_sum([[1,2],[3,4],[5,6],[7,8]]) == [16,20]
+
+def scalar_multiply(c: float , v:Vector) -> Vector:
+    """Multiplies every element by c"""
+    return [c * v_i for v_i in v]
+
+assert scalar_multiply(2,[1,2,3]) == [2,4,6]
