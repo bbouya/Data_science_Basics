@@ -15,3 +15,15 @@ def vector_equal(v1: Vector, v2:Vector) -> Vector:
 
 assert vector_equal([1,2,3],[2,1,3]) == [3] , 'not equal'
 assert vector_equal([1,2],[1,2]) == [1,2], 'not equal'
+
+from typing import List
+from linear_algebra import vector_mean
+def cluster_means(k: int, 
+                  inputs: List[Vector],
+                  assignments: List[int]) -> List[Vector]:
+    clusters = [[] for i in range(k)]
+    for input, assignment in zip(inputs, assignments):
+        clusters[assignment].append(input)
+    
+    #if a cluster is empty, just use a random point
+    return [vector_means]

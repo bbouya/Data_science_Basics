@@ -43,3 +43,11 @@ def scalar_multiply(c: float , v:Vector) -> Vector:
     return [c * v_i for v_i in v]
 
 assert scalar_multiply(2,[1,2,3]) == [2,4,6],'ayoub'
+
+def vector_mean(vectors: List[Vector]) -> Vector:
+    """Computer the element-wise average"""
+    n = len(vectors)
+    return scalar_multiply(1/n, vector_sum(vectors))
+
+assert vector_mean([[1,2],[3,4],[5,6]]) == [3,4]
+
