@@ -13,3 +13,5 @@ plt.title('Nominal')
 # Add a label 
 plt.ylabel('Billions of §')
 plt.show()
+
+plt.savefig('image/viz.png')
