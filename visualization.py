@@ -89,10 +89,10 @@ plt.ticklabel_format(useOffset=False)
 
 plt.axis([2016.5, 2018.5, 0, 550])
 plt.title("Not So Huge Anymore")
-# plt.show()
+plt.show()
 
 
-plt.savefig('im/viz_non_misleading_y_axis.png')
+plt.savefig('image/viz_non_misleading_y_axis.png')
 plt.gca().clear()
 
 variance     = [1, 2, 4, 8, 16, 32, 64, 128, 256]
