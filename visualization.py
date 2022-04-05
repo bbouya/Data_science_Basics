@@ -31,10 +31,10 @@ plt.ylabel("# of Academy Awards")   # label the y-axis
 # label x-axis with movie names at bar centers
 plt.xticks(range(len(movies)), movies)
 
-# plt.show()
+plt.show()
 
 
-plt.savefig('im/viz_movies.png')
+plt.savefig('image/viz_movies.png')
 plt.gca().clear()
 
 from collections import Counter
@@ -55,10 +55,10 @@ plt.xticks([10 * i for i in range(11)])    # x-axis labels at 0, 10, ..., 100
 plt.xlabel("Decile")
 plt.ylabel("# of Students")
 plt.title("Distribution of Exam 1 Grades")
-# plt.show()
+plt.show()
 
 
-plt.savefig('im/viz_grades.png')
+plt.savefig('image/viz_grades.png')
 plt.gca().clear()
 
 mentions = [500, 505]
@@ -75,10 +75,10 @@ plt.ticklabel_format(useOffset=False)
 # misleading y-axis only shows the part above 500
 plt.axis([2016.5, 2018.5, 499, 506])
 plt.title("Look at the 'Huge' Increase!")
-# plt.show()
+plt.show()
 
 
-plt.savefig('im/viz_misleading_y_axis.png')
+plt.savefig('image/viz_misleading_y_axis.png')
 plt.gca().clear()
 
 
