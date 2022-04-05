@@ -112,10 +112,10 @@ plt.legend(loc=9)
 plt.xlabel("model complexity")
 plt.xticks([])
 plt.title("The Bias-Variance Tradeoff")
-# plt.show()
+plt.show()
 
 
-plt.savefig('im/viz_line_chart.png')
+plt.savefig('image/viz_line_chart.png')
 plt.gca().clear()
 
 friends = [ 70,  65,  72,  63,  71,  64,  60,  64,  67]
@@ -134,10 +134,10 @@ for label, friend_count, minute_count in zip(labels, friends, minutes):
 plt.title("Daily Minutes vs. Number of Friends")
 plt.xlabel("# of friends")
 plt.ylabel("daily minutes spent on the site")
-# plt.show()
+plt.show()
 
 
-plt.savefig('im/viz_scatterplot.png')
+plt.savefig('image/viz_scatterplot.png')
 plt.gca().clear()
 
 test_1_grades = [ 99, 90, 85, 97, 80]
@@ -147,10 +147,10 @@ plt.scatter(test_1_grades, test_2_grades)
 plt.title("Axes Aren't Comparable")
 plt.xlabel("test 1 grade")
 plt.ylabel("test 2 grade")
-# plt.show()
+plt.show()
 
 
-plt.savefig('im/viz_scatterplot_axes_not_comparable.png')
+plt.savefig('image/viz_scatterplot_axes_not_comparable.png')
 plt.gca().clear()
 
 
@@ -161,5 +161,5 @@ plt.title("Axes Are Comparable")
 plt.axis("equal")
 plt.xlabel("test 1 grade")
 plt.ylabel("test 2 grade")
-plt.savefig('im/viz_scatterplot_axes_comparable.png')
+plt.savefig('image/viz_scatterplot_axes_comparable.png')
 plt.gca().clear()
