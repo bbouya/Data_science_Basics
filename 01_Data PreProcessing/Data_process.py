@@ -34,3 +34,4 @@ labelencoder_x = LabelEncoder()
 X[:,0] = labelencoder_x.fit_transform(X[:,0])
 # Encoding categirucal data using one hot encoding
 onehotencoder = OneHotEncoder(Categorical_featyres =  [0])
+
