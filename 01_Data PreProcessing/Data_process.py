@@ -26,3 +26,11 @@ imputer = imputer.fit(X[:,1:3])
 X[:,1:3] = imputer.transform(X[:,1:3])
 
 # To deal with categorical data we had to convert it into numbers
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+
+labelencoder_x = LabelEncoder()
+
+# Convertir first column into integer values
+X[:,0] = labelencoder_x.fit_transform(X[:,0])
+# Encoding categirucal data using one hot encoding
+onehotencoder = OneHotEncoder(Categorical_featyres =  [0])
